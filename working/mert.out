@@ -1,0 +1,2 @@
+Using SCRIPTS_ROOTDIR: /usr/local/mosesdecoder/scripts
+File not found: ./train/model/moses.ini (interpreted as /users/case4/casseds2/smt-lab/working/train/model/moses.ini). at /usr/local/mosesdecoder/scripts/training/mert-moses.pl line 449.
