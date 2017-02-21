@@ -10,6 +10,7 @@ class NGram{
 
 		ArrayList <String> list = new ArrayList<>();
 		list = nGram(tokens, n);
+
 		for(String s : list){
 			System.out.print(s + ",");
 		}
