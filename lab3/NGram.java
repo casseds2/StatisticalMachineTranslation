@@ -1,18 +1,21 @@
 import java.util.*;
 
+/**Class To Show NGram Calculations**/
 class NGram{
 	public static void main(String [] args){
 
 		String sample = "cat sat on the mat";
 
 		String [] tokens = sample.split(" ");
-		int n = 3;
+		int n = 1;
 
-		ArrayList <String> list = new ArrayList<>();
+		ArrayList <ArrayList<String>> list = new ArrayList<>();
 		list = nGram(tokens, n);
 
-		for(String s : list){
-			System.out.print(s + ",");
+		for(ArrayList<String> a : list){
+			for(String s : a){
+				System.out.print(s + ", ");
+			}
 		}
 		System.out.println();
 	}
@@ -20,16 +23,19 @@ class NGram{
 	NGram(){}
 
 	/**Function Does For Any number of N**/
-	static ArrayList<String> nGram(String [] tokens, int n){
-		ArrayList<String> list = new ArrayList<>();
+	static ArrayList<ArrayList<String>> nGram(String [] tokens, int n){
+		ArrayList<ArrayList<String>> list = new ArrayList<>();
+		ArrayList<String> setOfWords = new ArrayList<>();
 		for(int i = 0; i < tokens.length-(n-1); i++){
 			int position = i;
 			int count = 0;
 			while(count < n){
-				list.add(tokens[position]);
+				setOfWords.add(tokens[position]);
 				count++;
 				position++;
 			}
+			list.add(setOfWords);
+			setOfWords = new ArrayList<>();
 			count = 0;
 		}
 		return list;

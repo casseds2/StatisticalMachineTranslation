@@ -3,23 +3,27 @@ import java.util.*;
 
 class BleuCalculator{
 	public static void main(String [] args){
-		ArrayList<String> transList = null;
-		ArrayList<String> refList = null;
+		ArrayList<ArrayList<String>> candList = null;
+		ArrayList<ArrayList<String>> refList = null;
 		NGram ngram = new NGram();
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		String trans = "";
-		String [] transA = null;
+		String cand = "";
+		String [] candA = null;
 		String [] refA = null;
 		String ref = "";
 		float score = 0;
+		float currentNGram = 0;
 		float brevity = 0;
+		int flag = 0;
 
 		try{
 			System.out.println("Enter 2 Sentences To Be Compared:");
-			trans = /*in.readLine();*/ "The gunman was shot dead by police";
-			System.out.println(trans);
-			transA = trans.split(" ");
+			cand = /*in.readLine();*/ "The gunman was shot dead by police";
+			//cand = "Israeli officials are responsible for airport security";
+			System.out.println(cand);
+			candA = cand.split(" ");
 			ref = /*in.readLine();*/ "The gunman was shot dead by the police";
+			//ref = "airport security Israeli officials are responsible";
 			System.out.println(ref);
 			refA = ref.split(" ");
 			in.close();
@@ -27,28 +31,41 @@ class BleuCalculator{
 		catch(Exception e){
 			System.out.println("Error Reading Input");
 		}
-		for(int i = 1; i < 8; i++){
-			transList = ngram.nGram(transA, i);
+		for(int i = 1; i < 5; i++){
+			candList = ngram.nGram(candA, i);
 			refList = ngram.nGram(refA, i);
-			printArrayList(transList);
+			if(score != 0){
+				currentNGram = calculatePercentDiff(candList, refList);
+				score = score * calculatePercentDiff(candList, refList);
+			}
+			else{
+				currentNGram = calculatePercentDiff(candList, refList);
+				score = calculatePercentDiff(candList, refList);
+			}
+			if(candA.length > refA.length){
+				brevity = (float)refA.length / (float)candA.length;
+				flag = 1;
+			}	
+			else if (candA.length < refA.length) {
+					brevity = (float)candA.length / (float)refA.length;
+					flag = 2;
+			}
+			else{
+				brevity = 1;
+				flag = 3;
+			}
+			printArrayList(candList);
 			printArrayList(refList);
-			//transList = new ArrayList<String>(Arrays.asList(transA));
-			//refList = new ArrayList<String>(Arrays.asList(refA));
-			if(score != 0)
-				score = score * calculatePercentDiff(transList, refList);
-			else
-				score = calculatePercentDiff(transList, refList);
-			brevity = (float)transList.size() / (float)refList.size();
-			System.out.println("BREVITY:" + brevity);
-			System.out.println("Score for nGram(" + i + ") :" + root(score, (float)transList.size())*brevity);
+			System.out.println("Score for nGram(" + i + ") :" + currentNGram);
 		}
-		System.out.println("Final Score (All nGrams): " + root(score, (float)transList.size())*brevity);
+		System.out.println("Brevity = " + brevity + " FLAG: " + flag);
+		System.out.println("Final Score (BLEU) : " + root(score, 4)*brevity);
 	}
 
-	static float calculatePercentDiff(ArrayList<String> trans, ArrayList<String> ref){
+	static float calculatePercentDiff(ArrayList<ArrayList<String>> cand, ArrayList<ArrayList<String>> ref){
 		float count = 0;
-		for(int i = 0; i < trans.size(); i++){
-			if(trans.get(i).equals(ref.get(i)))
+		for(int i = 0; i < cand.size(); i++){
+			if(ref.contains(cand.get(i)))
 				count++;
 		}
 		return count/ref.size();
@@ -58,11 +75,16 @@ class BleuCalculator{
 	    return Math.pow(Math.E, Math.log(num)/root);
 	}
 
-	static void printArrayList(ArrayList<String> arry){
+	static void printArrayList(ArrayList<ArrayList<String>> list){
 		System.out.print("{");
-		for(String s : arry){
-			System.out.print(s + " ");
+		for(ArrayList<String> a : list){
+			System.out.print("{");
+			for(String s : a){
+				System.out.print(s + " ");
+			}
+			System.out.print("}");
 		}
-		System.out.print("} \n");
+		System.out.print("}");
+		System.out.println();
 	}
 }
