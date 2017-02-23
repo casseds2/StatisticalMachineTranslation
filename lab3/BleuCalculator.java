@@ -7,14 +7,15 @@ class BleuCalculator{
 		ArrayList<ArrayList<String>> refList = null;
 		NGram ngram = new NGram();
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		String cand = "";
-		String [] candA = null;
-		String [] refA = null;
-		String ref = "";
-		float score = 0;
-		float currentNGram = 0;
-		float brevity = 0;
-		int flag = 0;
+		String cand = ""; //Stores Candidate String
+		String ref = ""; //Stores Reference String
+		String [] candA = null; //Split candidate into array
+		String [] refA = null; //Split reference into array
+		float score = 0; // Final BLEU Score
+		float currentNGram = 0; //Score of the current nGram
+		int nGram = 5; //Dictates how many nGrams will be called (nGram - 1 calls)
+		float brevity = 0; //Brevity score
+		int flag = 0; //Personal flag to see what brevity score is
 
 		try{
 			System.out.println("Enter 2 Sentences To Be Compared:");
@@ -31,7 +32,7 @@ class BleuCalculator{
 		catch(Exception e){
 			System.out.println("Error Reading Input");
 		}
-		for(int i = 1; i < 5; i++){
+		for(int i = 1; i < nGram; i++){
 			candList = ngram.nGram(candA, i);
 			refList = ngram.nGram(refA, i);
 			if(score != 0){
