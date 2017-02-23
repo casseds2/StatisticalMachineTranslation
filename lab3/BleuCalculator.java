@@ -19,12 +19,12 @@ class BleuCalculator{
 
 		try{
 			System.out.println("Enter 2 Sentences To Be Compared:");
-			cand = "The gunman was shot dead by police";
+			cand = "The gunman was shot dead by police .";
 			//cand = "Israeli officials are responsible for airport security";
 			//cand  = in.readLine();
 			System.out.println(cand);
 			candA = cand.split(" ");
-			ref = "The gunman was shot dead by the police";
+			ref = "The gunman was shot dead by the police .";
 			//ref = "airport security Israeli officials are responsible";
 			//ref = in.readLine();
 			System.out.println(ref);
@@ -45,23 +45,27 @@ class BleuCalculator{
 				currentNGram = calculatePercentDiff(candList, refList);
 				score = calculatePercentDiff(candList, refList);
 			}
+			/**CAND > REF**/
 			if(candA.length > refA.length){
 				brevity = (float)refA.length / (float)candA.length;
 				flag = 1;
 			}	
+			/**CAND < REF**/
 			else if (candA.length < refA.length) {
 					brevity = (float)candA.length / (float)refA.length;
 					flag = 2;
 			}
+			/**CAND = REF**/
 			else{
 				brevity = 1;
 				flag = 3;
 			}
 			printArrayList(candList);
 			printArrayList(refList);
-			System.out.println("Score for nGram(" + i + ") :" + currentNGram);
+			System.out.println("Score for nGram(" + i + ") : " + currentNGram);
 		}
 		System.out.println("Brevity = " + brevity + " FLAG: " + flag);
+		System.out.println("Total Precisions: " + score);
 		System.out.println("Final Score (BLEU) : " + root(score, 4)*brevity);
 	}
 
@@ -71,7 +75,8 @@ class BleuCalculator{
 			if(ref.contains(cand.get(i)))
 				count++;
 		}
-		return count/ref.size();
+		//return count/ref.size();
+		return count/cand.size();
 	}
 
 	static double root(double num, double root) {
