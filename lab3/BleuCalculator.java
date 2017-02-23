@@ -19,12 +19,14 @@ class BleuCalculator{
 
 		try{
 			System.out.println("Enter 2 Sentences To Be Compared:");
-			cand = /*in.readLine();*/ "The gunman was shot dead by police";
+			cand = "The gunman was shot dead by police";
 			//cand = "Israeli officials are responsible for airport security";
+			//cand  = in.readLine();
 			System.out.println(cand);
 			candA = cand.split(" ");
-			ref = /*in.readLine();*/ "The gunman was shot dead by the police";
+			ref = "The gunman was shot dead by the police";
 			//ref = "airport security Israeli officials are responsible";
+			//ref = in.readLine();
 			System.out.println(ref);
 			refA = ref.split(" ");
 			in.close();
