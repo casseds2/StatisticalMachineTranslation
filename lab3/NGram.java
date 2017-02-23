@@ -41,6 +41,7 @@ class NGram{
 		return list;
 	}
 
+	/*
 	static void oneGram(String [] tokens){
 		System.out.println("//////////////");
 		System.out.println("1 Gram");
@@ -81,4 +82,5 @@ class NGram{
 		System.out.print("}");
 		System.out.println();
 	}
+	*/
 }
