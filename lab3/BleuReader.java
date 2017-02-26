@@ -33,7 +33,7 @@ class BleuReader{
 			for(String s : allRefs){
 				refA = s.split(" ");
 				score = calcPrecisionForNgram(candA, refA, nGram);
-				brevity = (float) candA.length / (float) longestString.length;
+				brevity = (float) candA.length / (float) refA.length;
 				score = calcPrecisionForNgram(candA, refA, nGram);
 				System.out.println("Brevity = " + brevity);
 				System.out.println("Total Precisions: " + score);
