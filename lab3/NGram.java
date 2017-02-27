@@ -22,7 +22,7 @@ class NGram{
 
 	NGram(){}
 
-	/**Function Does For Any number of N**/
+	/**Function Does NGram Break Up For Any number of N**/
 	static ArrayList<ArrayList<String>> breakIntoNGrams(String [] tokens, int n){
 		ArrayList<ArrayList<String>> list = new ArrayList<>();
 		ArrayList<String> setOfWords = new ArrayList<>();
@@ -40,7 +40,7 @@ class NGram{
 		}
 		return list;
 	}
-
+	
 	/*
 	static void oneGram(String [] tokens){
 		System.out.println("//////////////");

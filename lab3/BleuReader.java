@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 class BleuReader{
   public static void main(String [] args){
-		NGram ngram = new NGram();
 		String cand = ""; //Stores Candidate String
 		String ref = ""; //Stores Reference String
 		String [] candA = null; //Split candidate into array
@@ -19,7 +18,7 @@ class BleuReader{
     ArrayList<String> allRefs = new ArrayList<>(); //holds all references
 
     try{
-      //READ ALL APPROPRIATE INFORMATION
+      // Read all appropriate information
       BufferedReader br = new BufferedReader(new FileReader("Trans.txt"));
       PrintWriter pw = new PrintWriter(new File("Outputs.txt"));
       cand = br.readLine();
@@ -31,7 +30,7 @@ class BleuReader{
         allRefs.add(ref);
       }
       br.close();
-
+      // Perform Bleu Calculations
       for(int i = 1; i < nGram; i++){
         for(String s : allRefs){
           refA = s.split(" ");
@@ -102,7 +101,7 @@ class BleuReader{
 	static double rootFour(double num) {
 	    return Math.pow(num, 0.25);
 	}
-  //Breaks arrays into NGram 'sets' and returns the Precision Score
+  // Breaks arrays into NGram 'sets' and returns the Precision Score
 	static float calcPrecisionForNgram(String [] candA, String [] refA, int nGram){
 		float score = 0;
 		float tempScore = 0;
@@ -119,5 +118,23 @@ class BleuReader{
 				score = score * tempScore;
 		}
 		return score;
+	}
+  /**Function Does NGram Break Up For Any number of N**/
+  static ArrayList<ArrayList<String>> breakIntoNGrams(String [] tokens, int n){
+		ArrayList<ArrayList<String>> list = new ArrayList<>();
+		ArrayList<String> setOfWords = new ArrayList<>();
+		for(int i = 0; i < tokens.length-(n-1); i++){
+			int position = i;
+			int count = 0;
+			while(count < n){
+				setOfWords.add(tokens[position]);
+				count++;
+				position++;
+			}
+			list.add(setOfWords);
+			setOfWords = new ArrayList<>();
+			count = 0;
+		}
+		return list;
 	}
 }
