@@ -57,19 +57,20 @@ class BleuScore{
           }
         }
       }
+      /**If bestnGram(x) = 0, should I multiply it??**/
       float totalPrecision = bestnGramOne * bestnGramTwo * bestnGramThree * bestnGramFour;
-      pw.println("Best 1 : " + bestnGramOne);
-      pw.println("Best 2 : " + bestnGramTwo);
-      pw.println("Best 3 : " + bestnGramThree);
-      pw.println("Best 4 : " + bestnGramFour);
-      pw.println("Best Precision : " + totalPrecision);
-      pw.println("Best Length : " + bestLengthMatch);
       if(transArray.length > bestLengthMatch)
         brevity = bestLengthMatch / (float) transArray.length;
       if(transArray.length < bestLengthMatch)
         brevity = (float) transArray.length / bestLengthMatch;
       if(transArray.length == bestLengthMatch)
         brevity = 1;
+      pw.println("Best 1 : " + bestnGramOne);
+      pw.println("Best 2 : " + bestnGramTwo);
+      pw.println("Best 3 : " + bestnGramThree);
+      pw.println("Best 4 : " + bestnGramFour);
+      pw.println("Best Precision : " + totalPrecision);
+      pw.println("Best Length : " + bestLengthMatch);
       pw.println("Brevity : " + brevity);
       pw.println("Bleu : " + root(totalPrecision) * brevity);
       pw.close();
