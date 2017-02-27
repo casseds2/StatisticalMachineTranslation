@@ -7,10 +7,10 @@ class NGram{
 		String sample = "cat sat on the mat";
 
 		String [] tokens = sample.split(" ");
-		int n = 1;
+		int n = 4;
 
 		ArrayList <ArrayList<String>> list = new ArrayList<>();
-		list = breakIntoNGrams(tokens, n);
+		list = breakUp(tokens, n);
 
 		for(ArrayList<String> a : list){
 			for(String s : a){
@@ -40,7 +40,20 @@ class NGram{
 		}
 		return list;
 	}
-	
+
+	static ArrayList<ArrayList<String>> breakUp(String [] tokens, int n){
+		ArrayList<ArrayList<String>> list = new ArrayList<>();
+		ArrayList<String> setOfWords = new ArrayList<>();
+		for(int i = 0; i < tokens.length-(n-1); i++){
+			for(int j = i; j < i + n; j++){
+				setOfWords.add(tokens[j]);
+			}
+			list.add(setOfWords);
+			setOfWords = new ArrayList<>();
+		}
+		return list;
+	}
+
 	/*
 	static void oneGram(String [] tokens){
 		System.out.println("//////////////");

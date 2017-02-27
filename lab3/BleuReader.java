@@ -108,8 +108,8 @@ class BleuReader{
 		NGram ngram = new NGram();
 		ArrayList<ArrayList<String>> candList = new ArrayList<>();
 		ArrayList<ArrayList<String>> refList = new ArrayList<>();
-		candList = ngram.breakIntoNGrams(candA, nGram);
-		refList = ngram.breakIntoNGrams(refA, nGram);
+		candList = ngram.breakUp(candA, nGram);
+		refList = ngram.breakUp(refA, nGram);
 		if(score == 0)
 			score = calculatePercentDiff(candList, refList);
 		else{
@@ -120,20 +120,15 @@ class BleuReader{
 		return score;
 	}
   /**Function Does NGram Break Up For Any number of N**/
-  static ArrayList<ArrayList<String>> breakIntoNGrams(String [] tokens, int n){
+  static ArrayList<ArrayList<String>> breakUp(String [] tokens, int n){
 		ArrayList<ArrayList<String>> list = new ArrayList<>();
 		ArrayList<String> setOfWords = new ArrayList<>();
 		for(int i = 0; i < tokens.length-(n-1); i++){
-			int position = i;
-			int count = 0;
-			while(count < n){
-				setOfWords.add(tokens[position]);
-				count++;
-				position++;
+			for(int j = i; j < i + n; j++){
+				setOfWords.add(tokens[j]);
 			}
 			list.add(setOfWords);
 			setOfWords = new ArrayList<>();
-			count = 0;
 		}
 		return list;
 	}
