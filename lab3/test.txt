@@ -1,0 +1,118 @@
+Cand: The gunman was shot dead by police .
+Ref: The gunman was shot to death by the police .
+Ref: The gunman was shot to death by the police .
+Ref: Police killed the gunman .
+Ref: The gunman was shot dead by the police .
+Current Precison Score : 0.875
+{{The }{gunman }{was }{shot }{dead }{by }{police }{. }}
+{{The }{gunman }{was }{shot }{to }{death }{by }{the }{police }{. }}
+Current Precison Score : 0.5714286
+{{The gunman }{gunman was }{was shot }{shot dead }{dead by }{by police }{police . }}
+{{The gunman }{gunman was }{was shot }{shot to }{to death }{death by }{by the }{the police }{police . }}
+Current Precison Score : 0.33333334
+{{The gunman was }{gunman was shot }{was shot dead }{shot dead by }{dead by police }{by police . }}
+{{The gunman was }{gunman was shot }{was shot to }{shot to death }{to death by }{death by the }{by the police }{the police . }}
+Current Precison Score : 0.2
+{{The gunman was shot }{gunman was shot dead }{was shot dead by }{shot dead by police }{dead by police . }}
+{{The gunman was shot }{gunman was shot to }{was shot to death }{shot to death by }{to death by the }{death by the police }{by the police . }}
+Current Precison Score : 0.875
+{{The }{gunman }{was }{shot }{dead }{by }{police }{. }}
+{{The }{gunman }{was }{shot }{to }{death }{by }{the }{police }{. }}
+Current Precison Score : 0.5714286
+{{The gunman }{gunman was }{was shot }{shot dead }{dead by }{by police }{police . }}
+{{The gunman }{gunman was }{was shot }{shot to }{to death }{death by }{by the }{the police }{police . }}
+Current Precison Score : 0.33333334
+{{The gunman was }{gunman was shot }{was shot dead }{shot dead by }{dead by police }{by police . }}
+{{The gunman was }{gunman was shot }{was shot to }{shot to death }{to death by }{death by the }{by the police }{the police . }}
+Current Precison Score : 0.2
+{{The gunman was shot }{gunman was shot dead }{was shot dead by }{shot dead by police }{dead by police . }}
+{{The gunman was shot }{gunman was shot to }{was shot to death }{shot to death by }{to death by the }{death by the police }{by the police . }}
+Brevity = 1.25
+Total Precisions: 0.033333335
+Final Score (REFERENCE) (BLEU) : 0.5341087649592781
+//////////////////////////
+Current Precison Score : 0.875
+{{The }{gunman }{was }{shot }{dead }{by }{police }{. }}
+{{The }{gunman }{was }{shot }{to }{death }{by }{the }{police }{. }}
+Current Precison Score : 0.5714286
+{{The gunman }{gunman was }{was shot }{shot dead }{dead by }{by police }{police . }}
+{{The gunman }{gunman was }{was shot }{shot to }{to death }{death by }{by the }{the police }{police . }}
+Current Precison Score : 0.33333334
+{{The gunman was }{gunman was shot }{was shot dead }{shot dead by }{dead by police }{by police . }}
+{{The gunman was }{gunman was shot }{was shot to }{shot to death }{to death by }{death by the }{by the police }{the police . }}
+Current Precison Score : 0.2
+{{The gunman was shot }{gunman was shot dead }{was shot dead by }{shot dead by police }{dead by police . }}
+{{The gunman was shot }{gunman was shot to }{was shot to death }{shot to death by }{to death by the }{death by the police }{by the police . }}
+Current Precison Score : 0.875
+{{The }{gunman }{was }{shot }{dead }{by }{police }{. }}
+{{The }{gunman }{was }{shot }{to }{death }{by }{the }{police }{. }}
+Current Precison Score : 0.5714286
+{{The gunman }{gunman was }{was shot }{shot dead }{dead by }{by police }{police . }}
+{{The gunman }{gunman was }{was shot }{shot to }{to death }{death by }{by the }{the police }{police . }}
+Current Precison Score : 0.33333334
+{{The gunman was }{gunman was shot }{was shot dead }{shot dead by }{dead by police }{by police . }}
+{{The gunman was }{gunman was shot }{was shot to }{shot to death }{to death by }{death by the }{by the police }{the police . }}
+Current Precison Score : 0.2
+{{The gunman was shot }{gunman was shot dead }{was shot dead by }{shot dead by police }{dead by police . }}
+{{The gunman was shot }{gunman was shot to }{was shot to death }{shot to death by }{to death by the }{death by the police }{by the police . }}
+Brevity = 1.25
+Total Precisions: 0.033333335
+Final Score (REFERENCE) (BLEU) : 0.5341087649592781
+//////////////////////////
+Current Precison Score : 0.25
+{{The }{gunman }{was }{shot }{dead }{by }{police }{. }}
+{{Police }{killed }{the }{gunman }{. }}
+Current Precison Score : 0.0
+{{The gunman }{gunman was }{was shot }{shot dead }{dead by }{by police }{police . }}
+{{Police killed }{killed the }{the gunman }{gunman . }}
+Current Precison Score : 0.0
+{{The gunman was }{gunman was shot }{was shot dead }{shot dead by }{dead by police }{by police . }}
+{{Police killed the }{killed the gunman }{the gunman . }}
+Current Precison Score : 0.0
+{{The gunman was shot }{gunman was shot dead }{was shot dead by }{shot dead by police }{dead by police . }}
+{{Police killed the gunman }{killed the gunman . }}
+Current Precison Score : 0.25
+{{The }{gunman }{was }{shot }{dead }{by }{police }{. }}
+{{Police }{killed }{the }{gunman }{. }}
+Current Precison Score : 0.0
+{{The gunman }{gunman was }{was shot }{shot dead }{dead by }{by police }{police . }}
+{{Police killed }{killed the }{the gunman }{gunman . }}
+Current Precison Score : 0.0
+{{The gunman was }{gunman was shot }{was shot dead }{shot dead by }{dead by police }{by police . }}
+{{Police killed the }{killed the gunman }{the gunman . }}
+Current Precison Score : 0.0
+{{The gunman was shot }{gunman was shot dead }{was shot dead by }{shot dead by police }{dead by police . }}
+{{Police killed the gunman }{killed the gunman . }}
+Brevity = 1.6
+Total Precisions: 0.25
+Final Score (REFERENCE) (BLEU) : 1.1313708667572155
+//////////////////////////
+Current Precison Score : 1.0
+{{The }{gunman }{was }{shot }{dead }{by }{police }{. }}
+{{The }{gunman }{was }{shot }{dead }{by }{the }{police }{. }}
+Current Precison Score : 0.85714287
+{{The gunman }{gunman was }{was shot }{shot dead }{dead by }{by police }{police . }}
+{{The gunman }{gunman was }{was shot }{shot dead }{dead by }{by the }{the police }{police . }}
+Current Precison Score : 0.6666667
+{{The gunman was }{gunman was shot }{was shot dead }{shot dead by }{dead by police }{by police . }}
+{{The gunman was }{gunman was shot }{was shot dead }{shot dead by }{dead by the }{by the police }{the police . }}
+Current Precison Score : 0.6
+{{The gunman was shot }{gunman was shot dead }{was shot dead by }{shot dead by police }{dead by police . }}
+{{The gunman was shot }{gunman was shot dead }{was shot dead by }{shot dead by the }{dead by the police }{by the police . }}
+Current Precison Score : 1.0
+{{The }{gunman }{was }{shot }{dead }{by }{police }{. }}
+{{The }{gunman }{was }{shot }{dead }{by }{the }{police }{. }}
+Current Precison Score : 0.85714287
+{{The gunman }{gunman was }{was shot }{shot dead }{dead by }{by police }{police . }}
+{{The gunman }{gunman was }{was shot }{shot dead }{dead by }{by the }{the police }{police . }}
+Current Precison Score : 0.6666667
+{{The gunman was }{gunman was shot }{was shot dead }{shot dead by }{dead by police }{by police . }}
+{{The gunman was }{gunman was shot }{was shot dead }{shot dead by }{dead by the }{by the police }{the police . }}
+Current Precison Score : 0.6
+{{The gunman was shot }{gunman was shot dead }{was shot dead by }{shot dead by police }{dead by police . }}
+{{The gunman was shot }{gunman was shot dead }{was shot dead by }{shot dead by the }{dead by the police }{by the police . }}
+Brevity = 1.125
+Total Precisions: 0.34285718
+Final Score (REFERENCE) (BLEU) : 0.8608566432491959
+//////////////////////////
+Final Score (OVERALL) (BLEU) : -0.7903012811051945

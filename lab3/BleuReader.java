@@ -2,53 +2,103 @@ import java.io.*;
 import java.util.ArrayList;
 
 class BleuReader{
-	public static void main(String [] args){
-		ArrayList<ArrayList<String>> candList = null;
+  public static void main(String [] args){
+    ArrayList<ArrayList<String>> candList = null;
 		ArrayList<ArrayList<String>> refList = null;
 		NGram ngram = new NGram();
 		String cand = ""; //Stores Candidate String
 		String ref = ""; //Stores Reference String
 		String [] candA = null; //Split candidate into array
 		String [] refA = null; //Split reference into array
-		float score = 0; // Final BLEU Score
-		float currentNGram = 0; //Score of the current nGram
-		int nGram = 5; //Dictates how many nGrams will be called (nGram - 1 calls)
-		float brevity = 0; //Brevity score
-		int flag = 0; //Personal flag to see what brevity score is;
+    int nGram = 5; //Dictates how many nGrams will be called (nGram - 1 calls)
+    float bestnGramOne = 0; //holds best Value for Ngram = 1
+    float bestnGramTwo = 0; //holds best value for Ngram = 2
+    float bestnGramThree = 0; //holds best value for Ngram = 3
+    float bestnGramFour = 0; //holds best value for Ngram = 4
+    float score = 0; //holds score for ngram percision
+    float bestStringLength = 0; //holds value for best string length for brevity
+    float brevity = 0; //holds brevity
 
-		ArrayList<String> allRefs = new ArrayList<>();
+    ArrayList<String> allRefs = new ArrayList<>();
 
-		try{
-			BufferedReader in = new BufferedReader(new FileReader("TestStrings.txt"));
-			cand = in.readLine();
-			System.out.println("Cand: " + cand);
-			while((ref = in.readLine()) != null){
-				allRefs.add(ref);
-				System.out.println("Ref: " + ref);
-			}
-			in.close();
+    try{
+      BufferedReader br = new BufferedReader(new FileReader("TestStrings2.txt"));
+      PrintWriter pw = new PrintWriter(new File("Outputs.txt"));
+      //HANDLE CANDIDATE STRING
+      cand = br.readLine();
+      candA = cand.split(" ");
+      System.out.println("Output : " + cand);
 
-			candA = cand.split(" ");
+      //HANDLE REFERENCE STRINGS
+      while((ref = br.readLine()) != null){
+        System.out.println("Reference : " + ref);
+        allRefs.add(ref);
+      }
+      br.close();
 
-			for(String s : allRefs){
-				refA = s.split(" ");
-				score = calcPrecisionForNgram(candA, refA, nGram);
-				brevity = (float) candA.length / (float) refA.length;
-				score = calcPrecisionForNgram(candA, refA, nGram);
-				System.out.println("Brevity = " + brevity);
-				System.out.println("Total Precisions: " + score);
-				System.out.println("Final Score (BLEU) : " + root(score, 4)*brevity);
-				score = 0;
-				brevity = 0;
-			}
+      for(int i = 1; i < nGram; i++){
+        for(String s : allRefs){
+          refA = s.split(" ");
+          if(refA.length == candA.length){
+            bestStringLength = refA.length;
+          }
+          else if(Math.abs(candA.length - refA.length) < Math.abs(candA.length - bestStringLength)){
+            bestStringLength = refA.length;
+          }
+          score = calcPrecisionForNgram(candA, refA, i);
+          switch(i){
+            case 1 :
+              //System.out.println("CASE 1");
+              if(score > bestnGramOne){
+                bestnGramOne = score;
+              }
+              break;
+            case 2 :
+              //System.out.println("CASE 2");
+              if(score > bestnGramTwo){
+                bestnGramTwo = score;
+              }
+              break;
+            case 3 :
+              //System.out.println("CASE 3");
+              if(score > bestnGramThree){
+                bestnGramThree = score;
+              }
+              break;
+            case 4 :
+              //System.out.println("CASE 4");
+              if(score > bestnGramFour){
+                bestnGramFour = score;
+              }
+              break;
+          }
+        }
+      }
+      System.out.println("BEST NGRAM 1 : " + bestnGramOne);
+      System.out.println("BEST NGRAM 2 : " + bestnGramTwo);
+      System.out.println("BEST NGRAM 3 : " + bestnGramThree);
+      System.out.println("BEST NGRAM 4 : " + bestnGramFour);
+      float bestPrecison = bestnGramOne * bestnGramTwo * bestnGramThree * bestnGramFour;
+      System.out.println("Best Precision : " + bestPrecison);
+      System.out.println("Best Length : " + bestStringLength);
+      if(candA.length < bestStringLength)
+        brevity = (float) candA.length / (float) bestStringLength;
+      if(candA.length > bestStringLength)
+        brevity = (float) bestStringLength / (float) candA.length;
+      if(candA.length == bestStringLength)
+        brevity = 1;
+      System.out.println("Brevity : " + brevity);
+      float bleuScore = (float) root(bestPrecison, 4) * brevity;
+      System.out.println("Bleu Score : " + bleuScore);
+      pw.write("Bleu Score : " + bleuScore);
+      pw.close();
+    }
+    catch(Exception e){
+      System.out.println("I/O Error");
+    }
+  }
 
-		}
-		catch(Exception e){
-			System.out.println("I/O Error");
-		}
-	}
-
-	static float calculatePercentDiff(ArrayList<ArrayList<String>> cand, ArrayList<ArrayList<String>> ref){
+  static float calculatePercentDiff(ArrayList<ArrayList<String>> cand, ArrayList<ArrayList<String>> ref){
 		float count = 0;
 		for(int i = 0; i < cand.size(); i++){
 			if(ref.contains(cand.get(i)))
@@ -80,20 +130,18 @@ class BleuReader{
 		NGram ngram = new NGram();
 		ArrayList<ArrayList<String>> candList = new ArrayList<>();
 		ArrayList<ArrayList<String>> refList = new ArrayList<>();
-		for(int i = 1; i < nGram; i++){
-			candList = ngram.nGram(candA, i);
-			refList = ngram.nGram(refA, i);
-			if(score == 0){
-				score = calculatePercentDiff(candList, refList);
-				System.out.println("Current Precison Score : " + score);
-			}
-			else{
-				tempScore = calculatePercentDiff(candList, refList);
+		candList = ngram.nGram(candA, nGram);
+		refList = ngram.nGram(refA, nGram);
+		if(score == 0){
+			score = calculatePercentDiff(candList, refList);
+			//System.out.println("Current Precison Score : " + score);
+		}
+		else{
+			tempScore = calculatePercentDiff(candList, refList);
+			if(tempScore != 0){
 				score = score * tempScore;
-				System.out.println("Current Precison Score : " + tempScore);
+				//System.out.println("Current Precison Score (TEMP) : " + tempScore);
 			}
-			printArrayList(candList);
-			printArrayList(refList);
 		}
 		return score;
 	}
