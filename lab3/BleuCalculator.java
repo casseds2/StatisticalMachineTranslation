@@ -70,8 +70,8 @@ class BleuCalculator{
 		ArrayList<ArrayList<String>> candList = new ArrayList<>();
 		ArrayList<ArrayList<String>> refList = new ArrayList<>();
 		for(int i = 1; i < nGram; i++){
-			candList = ngram.nGram(candA, i);
-			refList = ngram.nGram(refA, i);
+			candList = ngram.breakIntoNGrams(candA, i);
+			refList = ngram.breakIntoNGrams(refA, i);
 			if(score == 0){
 				score = calculatePercentDiff(candList, refList);
 				System.out.println("Current Precison Score : " + score);

@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.ArrayList;
 
 /**Class To Show NGram Calculations**/
 class NGram{
@@ -10,7 +10,7 @@ class NGram{
 		int n = 1;
 
 		ArrayList <ArrayList<String>> list = new ArrayList<>();
-		list = nGram(tokens, n);
+		list = breakIntoNGrams(tokens, n);
 
 		for(ArrayList<String> a : list){
 			for(String s : a){
@@ -23,7 +23,7 @@ class NGram{
 	NGram(){}
 
 	/**Function Does For Any number of N**/
-	static ArrayList<ArrayList<String>> nGram(String [] tokens, int n){
+	static ArrayList<ArrayList<String>> breakIntoNGrams(String [] tokens, int n){
 		ArrayList<ArrayList<String>> list = new ArrayList<>();
 		ArrayList<String> setOfWords = new ArrayList<>();
 		for(int i = 0; i < tokens.length-(n-1); i++){
