@@ -95,7 +95,7 @@ class BleuReader{
 			if(ref.contains(cand.get(i)))
 				count++;
 		}
-		return count/cand.size();
+		return count / cand.size();
 	}
   // Returns 4th root of a numnber
 	static double rootFour(double num) {
@@ -104,19 +104,12 @@ class BleuReader{
   // Breaks arrays into NGram 'sets' and returns the Precision Score
 	static float calcPrecisionForNgram(String [] candA, String [] refA, int nGram){
 		float score = 0;
-		float tempScore = 0;
-		NGram ngram = new NGram();
-		ArrayList<ArrayList<String>> candList = new ArrayList<>();
-		ArrayList<ArrayList<String>> refList = new ArrayList<>();
-		candList = ngram.breakUp(candA, nGram);
-		refList = ngram.breakUp(refA, nGram);
+		ArrayList<ArrayList<String>> candList = breakUp(candA, nGram);
+		ArrayList<ArrayList<String>> refList = breakUp(refA, nGram);
 		if(score == 0)
 			score = calculatePercentDiff(candList, refList);
-		else{
-			tempScore = calculatePercentDiff(candList, refList);
-			if(tempScore != 0)
-				score = score * tempScore;
-		}
+    else
+      score = score * calculatePercentDiff(candList, refList);
 		return score;
 	}
   /**Function Does NGram Break Up For Any number of N**/
