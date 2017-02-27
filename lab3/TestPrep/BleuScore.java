@@ -8,11 +8,11 @@ class BleuScore{
     float bestnGramThree = 0;
     float bestnGramFour = 0;
     float bestLengthMatch = 0;
-    String [] transLength = null;
-    String [] refLength = null;
+    String [] transArray = null;
+    String [] refArray = null;
     float brevity = 0;
     try{
-      /**HANDLE FILES**/
+      /**Handle Files**/
       BufferedReader br = new BufferedReader(new FileReader("Trans.txt"));
       PrintWriter pw = new PrintWriter(new File("Output.txt"));
       ArrayList<String> refList = new ArrayList<>();
@@ -29,12 +29,12 @@ class BleuScore{
       for(int i = 1; i < 5; i++){
         ArrayList<ArrayList<String>> nTransList = calculateNgrams(output, i);
         for(String s : refList){
-          transLength = output.split(" ");
-          refLength = s.split(" ");
-          if(transLength.length == refLength.length)
-            bestLengthMatch = refLength.length;
-          else if(Math.abs(transLength.length - refLength.length) < Math.abs(transLength.length - bestLengthMatch))
-            bestLengthMatch = refLength.length;
+          transArray = output.split(" ");
+          refArray = s.split(" ");
+          if(transArray.length == refArray.length)
+            bestLengthMatch = refArray.length;
+          else if(Math.abs(transArray.length - refArray.length) < Math.abs(transArray.length - bestLengthMatch))
+            bestLengthMatch = refArray.length;
           ArrayList<ArrayList<String>> nRefList = calculateNgrams(s, i);
           float precision = calcPrecision(nTransList, nRefList);
           switch(i){
@@ -64,11 +64,11 @@ class BleuScore{
       pw.println("Best 4 : " + bestnGramFour);
       pw.println("Best Precision : " + totalPrecision);
       pw.println("Best Length : " + bestLengthMatch);
-      if(transLength.length > bestLengthMatch)
-        brevity = bestLengthMatch / (float) transLength.length;
-      if(transLength.length < bestLengthMatch)
-        brevity = (float) transLength.length / bestLengthMatch;
-      if(transLength.length == bestLengthMatch)
+      if(transArray.length > bestLengthMatch)
+        brevity = bestLengthMatch / (float) transArray.length;
+      if(transArray.length < bestLengthMatch)
+        brevity = (float) transArray.length / bestLengthMatch;
+      if(transArray.length == bestLengthMatch)
         brevity = 1;
       pw.println("Brevity : " + brevity);
       pw.println("Bleu : " + root(totalPrecision) * brevity);
