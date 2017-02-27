@@ -22,14 +22,14 @@ class BleuReader{
     ArrayList<String> allRefs = new ArrayList<>();
 
     try{
-      BufferedReader br = new BufferedReader(new FileReader("TestStrings2.txt"));
+      BufferedReader br = new BufferedReader(new FileReader("Trans.txt"));
       PrintWriter pw = new PrintWriter(new File("Outputs.txt"));
       //HANDLE CANDIDATE STRING
       cand = br.readLine();
       candA = cand.split(" ");
       System.out.println("Output : " + cand);
-
       //HANDLE REFERENCE STRINGS
+      br = new BufferedReader(new FileReader("Refs.txt"));
       while((ref = br.readLine()) != null){
         System.out.println("Reference : " + ref);
         allRefs.add(ref);
@@ -79,8 +79,8 @@ class BleuReader{
       System.out.println("BEST NGRAM 3 : " + bestnGramThree);
       System.out.println("BEST NGRAM 4 : " + bestnGramFour);
       float bestPrecison = bestnGramOne * bestnGramTwo * bestnGramThree * bestnGramFour;
-      System.out.println("Best Precision : " + bestPrecison);
-      System.out.println("Best Length : " + bestStringLength);
+      System.out.println("Overall Precision : " + bestPrecison);
+      System.out.println("Best String Length : " + bestStringLength);
       if(candA.length < bestStringLength)
         brevity = (float) candA.length / (float) bestStringLength;
       if(candA.length > bestStringLength)
