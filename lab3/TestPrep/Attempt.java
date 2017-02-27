@@ -85,10 +85,13 @@ class Attempt{
   }
 
   static float calculatePrecison(ArrayList<ArrayList<String>> out, ArrayList<ArrayList<String>> ref){
+    ArrayList<ArrayList<String>> usedWords = new ArrayList<>();
     float countSimilars = 0;
     for(int i = 0; i < out.size(); i++){
-      if(ref.contains(out.get(i)))
+      if(ref.contains(out.get(i)) && !usedWords.contains(out.get(i))){
         countSimilars++;
+        usedWords.add(out.get(i));
+      }
     }
     return countSimilars / (float) out.size();
   }
@@ -98,7 +101,7 @@ class Attempt{
     ArrayList<String> oneSet = new ArrayList<>();
     String [] splitString  = s.split(" ");
     for(int i = 0; i < splitString.length-(n-1); i++){
-      for(int j = i; j < i + n; j++){
+      for(int j = i; j < i + n; j++){ // j < i + n will just take the next 'n' elements since j = i
         oneSet.add(splitString[j]);
       }
       allSets.add(oneSet);

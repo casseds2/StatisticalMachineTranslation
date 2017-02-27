@@ -65,11 +65,11 @@ class BleuScore{
         brevity = (float) transArray.length / bestLengthMatch;
       if(transArray.length == bestLengthMatch)
         brevity = 1;
-      pw.println("Best 1 : " + bestnGramOne);
-      pw.println("Best 2 : " + bestnGramTwo);
-      pw.println("Best 3 : " + bestnGramThree);
-      pw.println("Best 4 : " + bestnGramFour);
-      pw.println("Best Precision : " + totalPrecision);
+      pw.println("Best n = 1 : " + bestnGramOne);
+      pw.println("Best n = 2 : " + bestnGramTwo);
+      pw.println("Best n = 3 : " + bestnGramThree);
+      pw.println("Best n = 4 : " + bestnGramFour);
+      pw.println("Product of Best Precisions : " + totalPrecision);
       pw.println("Best Length : " + bestLengthMatch);
       pw.println("Brevity : " + brevity);
       pw.println("Bleu : " + root(totalPrecision) * brevity);
@@ -90,10 +90,13 @@ class BleuScore{
   }
 
   static float calculatePercentDiff(ArrayList<ArrayList<String>> trans, ArrayList<ArrayList<String>> ref){
+    ArrayList<ArrayList<String>> usedWords = new ArrayList<>();
     float similarities = 0;
     for(int i = 0; i < trans.size(); i++){
-      if(ref.contains(trans.get(i)))
+      if(ref.contains(trans.get(i)) && !usedWords.contains(trans.get(i))){
         similarities++;
+        usedWords.add(trans.get(i));
+      }
     }
     return similarities / (float) trans.size();
   }

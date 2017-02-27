@@ -1,8 +1,8 @@
-Best 1 : 1.0
-Best 2 : 0.85714287
-Best 3 : 0.6666667
-Best 4 : 0.6
-Best Precision : 0.34285718
+Best Precison for n = 1 : 1.0
+Best Precison for n = 2 : 0.85714287
+Best Precison for n = 3 : 0.6666667
+Best Precison for n = 4 : 0.6
+Total precision : 0.34285718
 Best Length : 9.0
 Brevity : 0.8888889
-Bleu : 0.6801830318325552
+Bleu Score : 0.6801830318325552
