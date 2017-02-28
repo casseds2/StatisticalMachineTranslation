@@ -9,6 +9,7 @@ class DayTest{
 		float bestTwo = 0;
 		float bestThree = 0;
 		float bestFour = 0;
+		float bestFive = 0;
 		float brevity = 0;
 		String [] outputArray = null;
 		String [] refArray = null;
@@ -24,7 +25,7 @@ class DayTest{
 				allRefs.add(ref);
 			}
 			br.close();
-			for(int i = 1; i < 5; i++){
+			for(int i = 1; i < 6; i++){
 				outputArray = output.split(" ");
 				for(String s : allRefs){
 					refArray = s.split(" ");
@@ -52,6 +53,10 @@ class DayTest{
 							if(precision > bestFour)
 								bestFour = precision;
 							break;
+						case 5 :
+							if(precision > bestFive)
+								bestFive = precision;
+							break;		
 					}
 				}
 			}
@@ -62,11 +67,12 @@ class DayTest{
 			if(outputArray.length == bestLength)
 				brevity = 1;
 			float totalPrecision = bestOne * bestTwo * bestThree * bestFour;
-			float bleuScore = (float) Math.pow(totalPrecision, 0.25) * brevity;
+			float bleuScore = (float) Math.pow(totalPrecision, 0.2) * brevity;
 			pw.println("Best Precision (NGram 1) : " + bestOne);
 			pw.println("Best Precision (NGram 2) : " + bestTwo);
 			pw.println("Best Precision (NGram 3) : " + bestThree);
-			pw.println("Best Precision (NGram 4) : " + bestFour); 
+			pw.println("Best Precision (NGram 4) : " + bestFour);
+			pw.println("Best Precision (NGram 5) : " + bestFive);  
 			pw.println("Total Precision : " + totalPrecision);
 			pw.println("Best Length : " + bestLength);
 			pw.println("Brevity : " + brevity);

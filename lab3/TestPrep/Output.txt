@@ -7,7 +7,8 @@ Best Precision (NGram 1) : 1.0
 Best Precision (NGram 2) : 0.85714287
 Best Precision (NGram 3) : 0.6666667
 Best Precision (NGram 4) : 0.6
+Best Precision (NGram 5) : 0.5
 Total Precision : 0.34285718
 Best Length : 9.0
 Brevity : 0.8888889
-Bleu Score : 0.68018305
+Bleu Score : 0.71757966
