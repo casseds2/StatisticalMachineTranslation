@@ -13,6 +13,7 @@ class DayTest{
 		float brevity = 0;
 		String [] outputArray = null;
 		String [] refArray = null;
+		int nGram = 6;
 		try{
 			PrintWriter pw = new PrintWriter(new File("Output.txt"));
 			BufferedReader br = new BufferedReader(new FileReader("Trans.txt"));
@@ -25,14 +26,14 @@ class DayTest{
 				allRefs.add(ref);
 			}
 			br.close();
-			for(int i = 1; i < 6; i++){
+			for(int i = 1; i < nGram; i++){
 				outputArray = output.split(" ");
 				for(String s : allRefs){
 					refArray = s.split(" ");
 					if(refArray.length == outputArray.length)
 						bestLength = refArray.length;
 					if(Math.abs(outputArray.length - refArray.length) < (outputArray.length - bestLength))
-						bestLength = (float) refArray.length;
+						bestLength = refArray.length;
 					ArrayList<ArrayList<String>> transGram = calculateNGram(output, i);
 					ArrayList<ArrayList<String>> refGram = calculateNGram(s, i);
 					float precision = calculatePrecision(transGram, refGram);
@@ -66,7 +67,7 @@ class DayTest{
 				brevity = bestLength / (float) outputArray.length;
 			if(outputArray.length == bestLength)
 				brevity = 1;
-			float totalPrecision = bestOne * bestTwo * bestThree * bestFour;
+			float totalPrecision = bestOne * bestTwo * bestThree * bestFour * bestFive;
 			float bleuScore = (float) Math.pow(totalPrecision, 0.2) * brevity;
 			pw.println("Best Precision (NGram 1) : " + bestOne);
 			pw.println("Best Precision (NGram 2) : " + bestTwo);
