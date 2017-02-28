@@ -79,29 +79,29 @@ class LastTest{
 		}
 	}	
 
-		static float calcPrecision(ArrayList<ArrayList<String>> out, ArrayList<ArrayList<String>> ref){
-			float similarCount = 0;
-			ArrayList<ArrayList<String>> used = new ArrayList<>();
-			for(int i = 0; i < out.size(); i++){
-				if(ref.contains(out.get(i)) && !used.contains(out.get(i))){
-					used.add(out.get(i));
-					similarCount++;
-				}
+	static float calcPrecision(ArrayList<ArrayList<String>> out, ArrayList<ArrayList<String>> ref){
+		float similarCount = 0;
+		ArrayList<ArrayList<String>> used = new ArrayList<>();
+		for(int i = 0; i < out.size(); i++){
+			if(ref.contains(out.get(i)) && !used.contains(out.get(i))){
+				used.add(out.get(i));
+				similarCount++;
 			}
-			return similarCount / (float) out.size();
 		}
+		return similarCount / (float) out.size();
+	}
 
-		static ArrayList<ArrayList<String>> calcNGram(String s, int n){
-			ArrayList<ArrayList<String>> allSets = new ArrayList<>();
-			ArrayList<String> oneSet = new ArrayList<>();
-			String [] array = s.split(" ");
-			for(int i = 0; i < array.length-(n-1); i++){
-				for(int j = i; j < i + n; j++){
-					oneSet.add(array[j]);
-				}
-				allSets.add(oneSet);
-				oneSet = new ArrayList<>();
+	static ArrayList<ArrayList<String>> calcNGram(String s, int n){
+		ArrayList<ArrayList<String>> allSets = new ArrayList<>();
+		ArrayList<String> oneSet = new ArrayList<>();
+		String [] array = s.split(" ");
+		for(int i = 0; i < array.length-(n-1); i++){
+			for(int j = i; j < i + n; j++){
+				oneSet.add(array[j]);
 			}
-			return allSets;
+			allSets.add(oneSet);
+			oneSet = new ArrayList<>();
 		}
+		return allSets;
+	}
 }
