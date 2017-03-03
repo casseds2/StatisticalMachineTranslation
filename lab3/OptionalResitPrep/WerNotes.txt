@@ -1,0 +1,27 @@
+WORD ERROR RATE (WER):
+-Minimum number of edits to transform output to a reference.
+
+TERMS:
+-Match: words match and no tampering is needed
+-Substitution: Replace one work with another
+-Insertion: add word
+-Deletion: Remove a word
+-Levenshtein Distance: Minimum number of operations.
+
+FORMULA: Insertions + Deletions + Substitutions / Reference Length
+
+EXAMPLE:
+-Ref: Israeli officials are responsible for airport security
+-Output: Israeli official responsible airport is security
+
+Insertions: {are, for} = 2
+Deletions: {is} = 1
+Substitutions: {official -> officials} = 1
+
+=> WER Score = 2 + 1 + 1 / 4 = 4/7
+
+*WER Score is not a great metric as the translation could be great but the order is not the same as the original
+EXAMPLE:
+Ref: Israeli officials are responsible for airport security
+Output: This airport’s security is the responsibility of the I
+sraeli security officials 
