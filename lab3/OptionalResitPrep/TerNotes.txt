@@ -1,0 +1,15 @@
+TRANSLATION ERROR RATE (TER) :
+-Metric for measuring the number of changes required to change an output sentence into one of the references with additional
+costs for shifts of word sequences.
+
+FORMULA :
+- #Edits / Average # of Reference Words
+
+EXAMPLE :
+- Reference:  a b c d e f c
+- Hypothesis: a     d e  bcf
+Words "b" & "c" in hypothesis can be shifted left to correspond with bc in the reference.
+
+After shift:
+-Ref: a b c d e f c
+-Hyp: a b c d e f
