@@ -16,8 +16,8 @@ class Attempt{
     ArrayList<String> refList = new ArrayList<>();
     try{
       /**Handle Files**/
-      BufferedReader br = new BufferedReader(new FileReader("trans.txt"));
-      PrintWriter pw = new PrintWriter("Output.txt");
+      BufferedReader br = new BufferedReader(new FileReader("Trans.txt"));
+      PrintWriter pw = new PrintWriter(new File("Output.txt");
       output = br.readLine();
       System.out.println("Output : " + output);
       br = new BufferedReader(new FileReader("Refs.txt"));
