@@ -24,7 +24,7 @@ class BigramSmoothing{
    		}
          /**ArrayList of All Bigram Pairs**/
          ArrayList<ArrayList<String>> biGrams = calculateNgrams(input, 2);
-         String testString = "<s> a cat sat on the mat </s>";
+         String testString = "<s> a cat sat on the car </s>";
          /**Split Array of the Input String**/
          String [] splitString = testString.split(" ");
          /**Get Unique words in Corpus**/
