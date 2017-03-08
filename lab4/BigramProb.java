@@ -39,7 +39,7 @@ class BigramProb{
                   if(a.get(1).equals(splitString[i+1]))
                      countPair++;
                }
-            }
+         	}
             float currentScore = (float)countPair / (float) countSingle;
             totalScore = totalScore * currentScore;
             System.out.println("Probability of '" + splitString[i+1] + "' given '" + splitString[i] + "' equals : " + currentScore);
