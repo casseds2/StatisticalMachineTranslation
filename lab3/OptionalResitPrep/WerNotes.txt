@@ -23,5 +23,4 @@ Substitutions: {official -> officials} = 1
 *WER Score is not a great metric as the translation could be great but the order is not the same as the original
 EXAMPLE:
 Ref: Israeli officials are responsible for airport security
-Output: This airport’s security is the responsibility of the I
-sraeli security officials 
+Output: This airport’s security is the responsibility of the Israeli security officials 
