@@ -69,6 +69,7 @@ class NGramProb{
             System.out.println("Probability of sentence at nGram(" + i + ") equals : " + totalScore);
             countSingle = 0;
             countPair = 0;
+            totalScore = 1;
          }
       }
 
