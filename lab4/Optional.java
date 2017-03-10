@@ -34,6 +34,7 @@ class Optional{
       **/
       int countFirst = 0;
       int countAll = 0;
+      float currentScore = 0;
       float totalScore = 1;
       for(int i = 1; i < 5; i++){
         ArrayList<ArrayList<String>> lineGrams = calculateNgrams(testString, i);
@@ -46,12 +47,11 @@ class Optional{
               countFirst++;
             }  
           }
-          float currentScore = ((float)countAll +1 )/ ((float) countFirst + (float)uniqueCount);
+          currentScore = ((float)countAll +1 )/ ((float) countFirst + (float)uniqueCount);
           totalScore = totalScore * currentScore;
           System.out.print("Score for ");
           printNgramList(a);
-          System.out.print(" is " + currentScore);
-          System.out.println();
+          System.out.println(" is " + currentScore);
           countFirst = 0;
           countAll = 0;
         }
@@ -84,7 +84,7 @@ class Optional{
     }
     return allSets;
   }
-
+/**Print out a set of Ngrams stored in a list**/
   static void printNgramList(ArrayList<String> a){
      System.out.print("{");
      for(String s : a){
