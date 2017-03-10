@@ -5,7 +5,7 @@ import java.util.*;
 Count pair words are together / count of first word followed by any word
 **/
 
-class NgramHashProb{
+class Optional{
    public static void main(String[] args) {
       /**Read the Test File in**/
       String input = "";
@@ -24,8 +24,6 @@ class NgramHashProb{
       }
       /**Test String**/
       String testString = "<s> a cat sat on the mat </s>";
-      /**Split Array of the Input String**/
-      String [] splitString = testString.split(" ");
       /**Get Unique words in Corpus**/
       int uniqueCount = calculateUniques(input.split(" "));
       /**
@@ -62,20 +60,6 @@ class NgramHashProb{
       }
    }
 
-   /**Calculate Frequencies of Ngrams**/
-   static HashMap<ArrayList<String>, Integer> getNgramFreqs(ArrayList<ArrayList<String>> nGramArray){
-      HashMap<ArrayList<String>, Integer> h = new HashMap<>();
-      for(ArrayList<String> a : nGramArray){
-         if(h.containsKey(a)){
-            h.put(a, h.get(a) + 1);
-         }
-         else{
-            h.put(a, 1);
-         }
-      }
-      return h;
-   }
-
    /**Return Unique words of a List**/
    static int calculateUniques(String [] list){
       ArrayList<String> usedWords = new ArrayList<>();
@@ -100,17 +84,6 @@ class NgramHashProb{
     }
     return allSets;
   }
-
-  static void printNgramFreqs(HashMap<ArrayList<String>, Integer> h){
-     for(Map.Entry<ArrayList<String>, Integer> entry : h.entrySet()) {
-        //System.out.println(entry.getKey()+" : "+entry.getValue());
-        ArrayList<String> temp = entry.getKey();
-        int i = entry.getValue();
-        printNgramList(temp);
-        System.out.print(" = " + i);
-        System.out.println();
-     }
- }
 
   static void printNgramList(ArrayList<String> a){
      System.out.print("{");
