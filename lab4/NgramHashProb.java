@@ -1,9 +1,9 @@
 import java.io.*;
 import java.util.*;
 
-/*
+/**
 Count pair words are together / count of first word followed by any word
-*/
+**/
 
 class NgramHashProb{
    public static void main(String[] args) {
@@ -34,6 +34,32 @@ class NgramHashProb{
          For N-gram 3, if first 2 are the same, countFirst++; if last element is the same then countAll++
          For N-gram 4, if first 3 are the same, countFirst++, if last element is the same then countAll++
       **/
+      int countFirst = 0;
+      int countAll = 0;
+      float totalScore = 1;
+      for(int i = 1; i < 5; i++){
+        ArrayList<ArrayList<String>> lineGrams = calculateNgrams(testString, i);
+        ArrayList<ArrayList<String>> fileGrams = calculateNgrams(input, i);
+        for(ArrayList <String> a : lineGrams){ //For each list of Ngrams if size 'i' in the test line
+          for(ArrayList <String> b : fileGrams){ //For each list of Ngrams if size 'i' in the input line
+            if(a.equals(b)) // If the nGrams are the same, increase countALl
+              countAll++;
+            if(a.subList(0, i-1).equals(b.subList(0, i-1))){ //If nGram, except the last element is the same, countFirst++
+              countFirst++;
+            }  
+          }
+          float currentScore = ((float)countAll +1 )/ ((float) countFirst + (float)uniqueCount);
+          totalScore = totalScore * currentScore;
+          System.out.print("Score for ");
+          printNgramList(a);
+          System.out.print(" is " + currentScore);
+          System.out.println();
+          countFirst = 0;
+          countAll = 0;
+        }
+        System.out.println("Total Score for Ngram(" + i + ") is " + totalScore);
+        totalScore = 1;
+      }
    }
 
    /**Calculate Frequencies of Ngrams**/
