@@ -45,7 +45,7 @@ class Optional{
               countAll++;
             if(a.subList(0, i-1).equals(b.subList(0, i-1))){ //If nGram, except the last element is the same, countFirst++
               countFirst++;
-            }  
+            }
           }
           currentScore = ((float)countAll +1 )/ ((float) countFirst + (float)uniqueCount);
           totalScore = totalScore * currentScore;
