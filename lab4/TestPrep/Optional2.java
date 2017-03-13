@@ -3,6 +3,7 @@ import java.io.*;
 
 class Optional2{
    public static void main(String[] args) {
+      /************Variable Declarations*******************/
       String test = "<s> a cat sat on the mat </s>";
       String line = "";
       String input = "";
@@ -10,6 +11,7 @@ class Optional2{
       int countTwo = 0;
       float currentScore = 0;
       float totalScore = 1;
+      /*****************Read the File in*******************/
       try{
          BufferedReader br = new BufferedReader(new FileReader("input.txt"));
          while((line = br.readLine()) != null){
@@ -21,6 +23,7 @@ class Optional2{
       catch(IOException e){
          System.out.println("I/O Error");
       }
+      /**************Main Logic******************/
       int uniqueCount = uniqueCountScore(input);
       System.out.println("Unique Count " + uniqueCount);
       for(int i = 1; i < 5; i++){
@@ -46,8 +49,10 @@ class Optional2{
          System.out.println("Total Score for gram(" + i + ") is " + totalScore);
          totalScore = 1;
       }
+      /********************************************/
    }
 
+   /**************Print a List**************/
    static void printList(ArrayList<String> a){
       System.out.print("{");
       for(String s : a){
@@ -56,6 +61,7 @@ class Optional2{
       System.out.print("}");
    }
 
+   /*************Unique Words Contained in a String*************/
    static int uniqueCountScore(String s){
       ArrayList<String> used = new ArrayList<>();
       String [] array = s.split(" ");
@@ -65,7 +71,7 @@ class Optional2{
       }
       return used.size();
    }
-
+   /**************N-Gram Partitioner******************/
    static ArrayList<ArrayList<String>> nGramPart(String s, int n){
       ArrayList<ArrayList<String>> allSets = new ArrayList<>();
       ArrayList<String> oneSet = new ArrayList<>();
