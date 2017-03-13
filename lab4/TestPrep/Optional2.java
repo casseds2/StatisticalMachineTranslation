@@ -49,7 +49,6 @@ class Optional2{
          System.out.println("Total Score for gram(" + i + ") is " + totalScore);
          totalScore = 1;
       }
-      /********************************************/
    }
 
    /**************Print a List**************/
