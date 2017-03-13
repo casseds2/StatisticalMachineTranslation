@@ -22,7 +22,7 @@ class RNgram{
          System.out.println("}");
       }
    }
-
+   /**Recursive Function to Return all Ngrams of Size n**/
    static ArrayList<ArrayList<String>> gramSet(ArrayList<ArrayList<String>> list, String [] s, int n, int index){
       if(index < s.length-(n-1)){
          list.add(gram(s, n, index));
@@ -30,7 +30,7 @@ class RNgram{
       }
       return list;
    }
-
+   /**Return a gram of n size from index 'index' **/
    static ArrayList<String> gram(String [] s, int n, int index){
       ArrayList<String> set = new ArrayList<>();
       for(int i = index; i < index + n; i++){
