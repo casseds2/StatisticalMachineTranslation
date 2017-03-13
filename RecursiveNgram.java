@@ -4,7 +4,7 @@ class RecursiveNgram{
    public static void main(String[] args) {
       ArrayList<ArrayList<String>> list = new ArrayList<>();
       int index = 0;
-      String test = "the cat on the mat";
+      String test = "the cat on the mat hid under the grey sack";
       String [] array = test.split(" ");
       ArrayList<ArrayList<String>> grams = new ArrayList<>();
       for(int i = 1; i < 5; i++){
