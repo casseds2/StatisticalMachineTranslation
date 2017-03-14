@@ -8,7 +8,7 @@ class Optional3{
       String input = "";
       /**READ THE FILE IN**/
       try{
-         BufferedReader br = new BufferedReader(new FileReader("inpt.txt"));
+         BufferedReader br = new BufferedReader(new FileReader("input.txt"));
          while((line = br.readLine()) != null){
             input = input + line + " ";
          }
