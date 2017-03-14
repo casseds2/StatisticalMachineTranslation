@@ -47,7 +47,7 @@ class Optional{
               countFirst++;
             }
           }
-          currentScore = ((float)countAll +1 )/ ((float) countFirst + (float)uniqueCount);
+          currentScore = ((float)countAll + 1)/ ((float) countFirst + (float)uniqueCount);
           totalScore = totalScore * currentScore;
           System.out.print("Score for ");
           printNgramList(a);

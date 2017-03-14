@@ -38,7 +38,7 @@ class Optional2{
                   countTwo++;
                }
             }
-            currentScore = ((float)countOne +1 )/ ((float) countTwo + (float)uniqueCount);
+            currentScore = ((float)countOne + 1)/ ((float)countTwo + (float)uniqueCount);
             totalScore = totalScore * currentScore;
             System.out.print("Score for ");
             printList(a);
