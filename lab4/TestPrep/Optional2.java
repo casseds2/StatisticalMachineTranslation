@@ -15,8 +15,7 @@ class Optional2{
       try{
          BufferedReader br = new BufferedReader(new FileReader("input.txt"));
          while((line = br.readLine()) != null){
-            line = line + " ";
-            input = input + line;
+            input = input + line + " ";
          }
          br.close();
       }
@@ -38,7 +37,7 @@ class Optional2{
                   countTwo++;
                }
             }
-            currentScore = ((float)countOne + 1)/ ((float)countTwo + (float)uniqueCount);
+            currentScore = ((float)countOne + 1)/ ((float)countTwo + (float)uniqueCount); //FORMULA
             totalScore = totalScore * currentScore;
             System.out.print("Score for ");
             printList(a);
