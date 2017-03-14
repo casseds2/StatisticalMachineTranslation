@@ -3,19 +3,20 @@ import java.util.*;
 
 class Optional3{
    public static void main(String[] args) {
-      String test = "<s> a cat sat on the mat </s>";
+      String test = "<s> a cat sat on the car </s>";
       String line = "";
       String input = "";
       /**READ THE FILE IN**/
       try{
-         BufferedReader br = new BufferedReader(new FileReader("input.txt"));
+         BufferedReader br = new BufferedReader(new FileReader("inpt.txt"));
          while((line = br.readLine()) != null){
             input = input + line + " ";
          }
          br.close();
       }
       catch(IOException e){
-         System.out.println("I/O Error");
+         System.out.print("I/O Error");
+         System.exit(0);
       }
       /**MAIN LOGIC**/
       int uniqueCount = calcUnique(input);
@@ -42,7 +43,7 @@ class Optional3{
          totalScore = 1;
       }
    }
-
+   /**CALCULATE UNIQUE WORDS**/
    static int calcUnique(String s){
       String [] array = s.split(" ");
       ArrayList<String> used = new ArrayList<>();
@@ -52,7 +53,7 @@ class Optional3{
       }
       return used.size();
    }
-
+   /**PARTITION THE STRING**/
    static ArrayList<ArrayList<String>> gramPart(String s, int n){
       ArrayList<ArrayList<String>> allSets = new ArrayList<>();
       ArrayList<String> oneSet = new ArrayList<>();

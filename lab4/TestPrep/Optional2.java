@@ -37,11 +37,13 @@ class Optional2{
                   countTwo++;
                }
             }
-            currentScore = ((float)countOne + 1)/ ((float)countTwo + (float)uniqueCount); //FORMULA
+            currentScore = ((float)countOne + 1)/ ((float)countTwo + (float)uniqueCount);
             totalScore = totalScore * currentScore;
+            /*
             System.out.print("Score for ");
             printList(a);
             System.out.println(" is " + currentScore);
+            */
             countOne = 0;
             countTwo = 0;
          }
