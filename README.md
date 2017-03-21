@@ -7,6 +7,6 @@ Code for SMT labs:
 
 -Lab4 Code up (Optional Question included)
 
--Lab5 Code in Progress (Q1 not included)
+-Lab5 Code in Progress
 
 -Recursive NGram function, not in use with code

@@ -1,0 +1,1 @@
+--QuestionOne is just a sample of Simplified IBM Model
