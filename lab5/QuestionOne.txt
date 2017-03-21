@@ -2,13 +2,13 @@
 Input Word W1 = {the, house}
 Target Word T1 = {la, maison}
 
-/*************************/
 /**SECOND SET**/
 Input Word W2 = {house}
 Target Word t2 = {maison}
-/*************************/
+
 
 /**INTIALISATION**/
+t(house|maison) = 1
 t(the|la) = 1/2
 t(the|maison) = 1/2
 t(house|la = 1/2
