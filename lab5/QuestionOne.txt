@@ -8,11 +8,12 @@ Target Word t2 = {maison}
 
 
 /**INTIALISATION**/
-t(house|maison) = 1
 t(the|la) = 1/2
 t(the|maison) = 1/2
 t(house|la = 1/2
 t(house|maison) = 1/2
+
+t(house|maison) = 1
 
 /**ITERATION ONE**/
 	//Collect counts of word pairs in sentence
@@ -22,8 +23,8 @@ t(house|maison) = 1/2
 	- c(house|maison) = 1/2 / (1/2+1/2) * 1 = 1/2
 
 	//Get new word translation probabilities
-	- t(the|la) = 1 + 1/2 / 1/2 + 1/2 + 1 = 3/4
-	- t(the|maison) = 1/2 / 1/2 + 1/2 + 1 = 1/4
+	- t(the|la) = 1/2 / 1/2 + 1/2 + 1 = 1/4
+	- t(the|maison) = 1 + 1/2 / 1/2 + 1/2 + 1 = 3/4
 	- t(house|la) = 1/2 / 1/2 + 1/2 = 1/2
 	- t(house|maison) = 1/2 / 1/2 + 1/2 = 1/2
 
