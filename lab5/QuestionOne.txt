@@ -1,0 +1,41 @@
+/**FIRST SET**/
+Input Word W1 = {the, house}
+Target Word T1 = {la, maison}
+
+/*************************/
+/**SECOND SET**/
+Input Word W2 = {house}
+Target Word t2 = {maison}
+/*************************/
+
+/**INTIALISATION**/
+t(the|la) = 1/2
+t(the|maison) = 1/2
+t(house|la = 1/2
+t(house|maison) = 1/2
+
+/**ITERATION ONE**/
+	//Collect counts of word pairs in sentence
+	- c(the|la) = 1/2 / 1/2 * 1 = 1
+	- c(the|maison) = 1/2 / (1/2+1/2) * 1 = 1/2
+	- c(house|la) = 1/2 / (1/2+1/2) * 1 = 1/2
+	- c(house|maison) = 1/2 / (1/2+1/2) * 1 = 1/2
+
+	//Get new word translation probabilities
+	- t(the|la) = 1 + 1/2 / 1/2 + 1/2 + 1 = 3/4
+	- t(the|maison) = 1/2 / 1/2 + 1/2 + 1 = 1/4
+	- t(house|la) = 1/2 / 1/2 + 1/2 = 1/2
+	- t(house|maison) = 1/2 / 1/2 + 1/2 = 1/2
+
+/**ITERATION TWO**/
+	//Collect counts of word pair in sentence
+	- c(the|la) = 3/4 / (3/4 + 1/2) * 1 = 3/5
+	- c(the|maison) = 1/2 / (1/4 + 1/2) * 1 = 1/3
+	- c(house|la) = 1/2 / (1/2 + 3/4) * 1 = 2/5
+	- c(house| maison) = 1/2 / (1/2 * 1/4) * 1 = 2/3
+
+	//Get new word translation probabilities
+	- t(the|la) = 1 + 3/5 / 3/5 + 1/3 + 1 = 24/29
+	- t(the|maison) = 1/3 / 3/5 + 1/3 + 1 = 5/29
+	- t(house|la) = 2/5 / 2/5 + 2/3 = 3/8
+	- t(house|maison) = 2/3 / 2/3 + 2/5 = 5/8
