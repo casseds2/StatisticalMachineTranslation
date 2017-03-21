@@ -1,0 +1,26 @@
+A1: maison ---> house
+
+A2: the ---> la
+	house ---> maison
+
+A3: the ---> maison
+	house ---> la
+
+/**INTIALISATION**/
+t(the|la) = 1/2
+t(the|maison) = 1/2
+t(house|la = 1/2
+t(house|maison) = 1/2
+
+/**EXPECTATION**/
+p(e, a1|f) = t(house|maison) = 1/2
+p(e, a2|f) = t(the|la) * t(house|maison) = 1/2 * 1/2 = 1/4
+p(e, a3|f) = t(the|maison) * t(house|la) = 1/2 * 1/2 = 1/4
+
+	//NORMALIZE ALIGNEMENT PROBABILITY
+	p(e, a1|e,f) = (1/2)(1/2) = 1/4
+	p(e, a2|e,f) = (1/4)(1/4*2) = 1/2
+	p(e, a3|e,f) = (1/4)(1/4*2) = 1/2
+
+/**MAXIMISATION**/
+c(the|la) = 
