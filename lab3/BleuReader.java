@@ -1,7 +1,7 @@
 import java.io.*; //BufferedReader, PrintWriter, FileReader, File
 import java.util.ArrayList;
 
-private class BleuReader{
+class BleuReader{
   private static void main(String [] args){
 		String cand = ""; //Stores Candidate String
 		String ref = ""; //Stores Reference String
