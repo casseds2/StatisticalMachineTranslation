@@ -36,7 +36,7 @@ t(house|maison) = 1
 	- c(house| maison) = 1/2 / (1/2 * 1/4) * 1 = 2/3
 
 	//Get new word translation probabilities
-	- t(the|la) = 1 + 3/5 / 3/5 + 1/3 + 1 = 24/29
-	- t(the|maison) = 1/3 / 3/5 + 1/3 + 1 = 5/29
+	- t(the|la) = 3/5 / 3/5 + 1/3 + 1 = 31/100
+	- t(the|maison) = 1 + 1/3 / 3/5 + 1/3 + 1 = 17/25
 	- t(house|la) = 2/5 / 2/5 + 2/3 = 3/8
 	- t(house|maison) = 2/3 / 2/3 + 2/5 = 5/8
